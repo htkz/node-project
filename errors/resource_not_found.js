@@ -1,11 +1,11 @@
 const HTTPBaseError = require('./http_base_error');
 
-const ERROR_CODE = 50000;
+const ERROR_CODE = 40400;
 
-class InternalServerError extends HTTPBaseError {
-  constructor(msg) {
-    super(500, '服务器好像开小差了,请稍后刷新~', ERROR_CODE, `something went wrong: ${msg}`);
+class ResourceNotFoundError extends HTTPBaseError {
+  constructor(resourceName, resourceId, httpMsg) {
+    super(404, httpMsg, ERROR_CODE, `not found, id: ${resourceId}`);
   }
 }
 
-module.exports = InternalServerError;
+module.exports = ResourceNotFoundError;
